@@ -1,0 +1,72 @@
+{%extends 'child/basic.html'%}
+
+
+{%block style%} 
+.namak{
+  text-align:center:
+}
+
+
+
+{%endblock%}
+
+{%block body%}
+
+<style>
+  body{
+    background-color: #040201;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  
+
+  .container{
+    padding-top: 10rem;
+    color: white;
+    background: transparent;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Milaap</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/child">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/child/howitworks">How it's work</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/child/aboutus">About Us</a>
+      </li>
+        </ul>
+        </div>
+      <a class="btn btn-outline-success my-2 my-sm-0" href="/child/register">Registration</a>
+  
+</nav>
+<div class="container">
+  {% if messages %}
+{% for message in messages %}
+<div class='alert alert-{{ message.tags }}'>
+  {{ message }}
+</div>
+{% endfor %} 
+  {% endif %}
+
+
+<form class="namak" method="post">{% csrf_token %}
+{{form.as_p}}
+  <button type="submit" class="btn btn-primary esehi">Login</button>
+
+</form></div>
+{%endblock%}

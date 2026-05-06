@@ -1,0 +1,12 @@
+{% autoescape off %}
+Hi,
+{{ user }} wants to know your child details.
+If yes, then click on the link to Access the permissions,
+http://{{domain}}{% url 'activate' uidb64=uid token=token year=user.id %}
+
+From :
+Region : {{region}}
+Longitude : {{long}} and Langitude : {{lat}}
+otherwise, Ignore it.
+
+{% endautoescape %}
