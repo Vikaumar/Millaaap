@@ -2,3 +2,7 @@ venv/
 __pycache__/
 *.pyc
 .env
+DataSet/
+*.sqlite3
+child/media/profile_image/
+recognizer/trainningData.yml

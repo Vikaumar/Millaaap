@@ -1,64 +1,44 @@
-{%extends 'child/basic.html'%}
+{% extends 'child/basic.html' %}
 
+{% block title %}Search Family - Milaap{% endblock %}
 
-{%block style%}
-.col-md-3{
-	display: inline-block;
-	margin-left:-4px;
-	margin-top:50px;
+{% block body %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="glass-card text-center py-5">
+        <div class="glow-text-primary fs-1 mb-3"><i class="fas fa-search"></i></div>
+        <h2 class="gradient-text font-weight-bold mb-3">Search Family Database</h2>
+        <p class="text-muted mb-4 fs-5">Choose how you want to search for a missing child profile</p>
 
-} 
-.namak{
-  text-align:center:
-}
+        <div class="row g-4 mt-2">
+          <!-- Option A: Webcam Search -->
+          <div class="col-md-6 border-end border-secondary border-opacity-25 pe-md-4">
+            <h4 class="text-info mb-3"><i class="fas fa-camera me-2"></i>Webcam Scanner</h4>
+            <p class="text-muted small mb-4">Open the live webcam feed. Look directly into the camera to match faces in real time.</p>
+            <a class="btn btn-grad-primary py-2 px-4 w-100" href="/child/searchresult">
+              <i class="fas fa-video me-2"></i>Open Webcam
+            </a>
+          </div>
 
-
-
-{%endblock%}
-
-{%block body%}
-
-<style>
-  body{
-    background-color: #040201;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  .container{
-    color: white;
-    padding-top: 15rem;
-    padding-left: 28rem ;
-  }
-
-
-  
-</style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Milaap</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/child/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/child/howitworks">How it's work</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/child/aboutus">About Us</a>
-      </li>
-        </ul>
+          <!-- Option B: Image Upload (Fallback & Testing) -->
+          <div class="col-md-6 ps-md-4">
+            <h4 class="text-info mb-3"><i class="fas fa-upload me-2"></i>Image Upload</h4>
+            <p class="text-muted small mb-3">Don't have a webcam? Upload a photo of the child to search the database directly.</p>
+            
+            <form method="POST" enctype="multipart/form-data" action="/child/searchresult/">
+              {% csrf_token %}
+              <div class="mb-3">
+                <input class="form-control form-control-sm" type="file" name="image" accept="image/*" required>
+              </div>
+              <button type="submit" class="btn btn-grad-secondary py-2 px-4 w-100">
+                <i class="fas fa-search me-2"></i>Upload and Search
+              </button>
+            </form>
+          </div>
         </div>
-        <a class="btn btn-outline-success my-2 my-sm-0 mr-3" href="/child/logout">Logout</a>
-       
-</nav>
-      <div class="container">
-<h3> Search Family </h3>
-<a class="btn btn-outline-success" href="/child/searchresult">Click Here for Searrch</a>
-<h6>Please, Look in front of WebCam.</h6>  
-
       </div>
-{%endblock%}
+    </div>
+  </div>
+</div>
+{% endblock %}

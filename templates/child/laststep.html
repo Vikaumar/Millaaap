@@ -1,65 +1,38 @@
-{%extends 'child/basic.html'%}
+{% extends 'child/basic.html' %}
 
+{% block title %}Training Database - Milaap{% endblock %}
 
-{%block style%}
-.col-md-3{
-	display: inline-block;
-	margin-left:-4px;
-	margin-top:50px;
+{% block body %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="glass-card text-center py-5">
+        <div class="glow-text-primary fs-1 mb-3"><i class="fas fa-brain"></i></div>
+        <h2 class="gradient-text font-weight-bold mb-3">Model Training Required</h2>
+        <p class="text-muted mb-4 fs-5">
+          To successfully match the newly registered child's face, the AI recognition model needs to train on the samples.
+        </p>
 
-} 
-.namak{
-  text-align:center:
-}
-
-
-
-{%endblock%}
-
-{%block body%}
-
-<style>
-  body{
-    background-color: #040201;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  h3{
-    color: white;
-
-  }
-
-  .container{
-    padding-top: 15rem;
-    padding-left: 22rem ;
-  }
-  
-</style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Milaap</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/child/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/child/howitworks">How it's work</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/child/aboutus">About Us</a>
-      </li>
-        </ul>
+        <div class="alert alert-info border-info-subtle mb-5 text-start d-flex align-items-center">
+          <i class="fas fa-info-circle fs-4 me-3 text-info"></i>
+          <div>
+            <strong>Important:</strong> Training can take a few seconds. If you don't have a physical webcam connected, the system will automatically fall back to processing the child's uploaded profile picture.
+          </div>
         </div>
-        <a class="btn btn-outline-success my-2 my-sm-0 mr-3" href="/child/logout">Logout</a>
-       
-</nav>
-      <div class="container">
-<h3> Last Step For adding Member</h3><br>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-outline-success" href="/child/congrats">Click Here for Trainning</a>  
 
+        <a class="btn btn-grad-primary btn-lg px-5 py-3" href="/child/congrats" onclick="showLoader()">
+          <span id="btn-text"><i class="fas fa-cogs me-2"></i>Run Training Now</span>
+          <span id="btn-spinner" class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+        </a>
       </div>
-{%endblock%}
+    </div>
+  </div>
+</div>
+
+<script>
+  function showLoader() {
+    document.getElementById("btn-text").innerHTML = "Training Model...";
+    document.getElementById("btn-spinner").classList.remove("d-none");
+  }
+</script>
+{% endblock %}

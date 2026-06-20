@@ -20,7 +20,7 @@ class LoginRequiredMiddleware:
 		path=request.path_info.lstrip('/')
 		if not request.user.is_authenticated:
 			if not any(url.match(path) for url in EXEMPT_URLS):
-				print("Hello Keshav")
+				print("User not authenticated, redirecting to login")
 				return redirect(settings.LOGIN_URL)
 		url_is_exempt=any(url.match(path) for url in EXEMPT_URLS)
 		if path=='/childfinder/logout':
@@ -30,9 +30,9 @@ class LoginRequiredMiddleware:
 				flag=1
 				return HttpResponseRedirect('/childfinder/dashboard')
 			elif request.user.is_authenticated or url_is_exempt:
-				print("Hello Keshav2")
+				print("User authenticated or URL is exempt")
 				return None
 			else:
-				print("Hello Keshav3")
+				print("Access denied, redirecting to login")
 				return redirect(settings.LOGIN_URL)
 

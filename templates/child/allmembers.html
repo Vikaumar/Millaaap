@@ -1,83 +1,72 @@
-{%extends 'child/basic.html'%}
+{% extends 'child/basic.html' %}
 {% load extratags %}
 
-{%block style%}
-.col-md-3{
-  display: inline-block;
-  margin-left:-4px;
-  margin-top:50px;
+{% block title %}My Registered Children - Milaap{% endblock %}
 
-} 
-.namak{
-  text-align:center:
-}
-
-
-
-{%endblock%}
-
-{%block body%}
-
-<style>
-  body{
-    background-color: #040201;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  .card{
-    border: 1px solid grey ;
-    background: none;
-    margin-top: 5%;
-    color: white;
-  }
-  
-  
-  
-</style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Milaap</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/child/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/child/howitworks">How it's work</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/child/aboutus">About Us</a>
-      </li>
-        </ul>
-        </div>
-        <a class="btn btn-outline-success my-2 my-sm-0 mr-3" href="/child/logout">Logout</a>
-       
-</nav>
-      <div class="container">
-        {% for esehi in user.esehi_set.all %}
-      <div class="card mb-3" style="max-width: 540px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="/media/{{esehi.image}}" class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{esehi.name}} </h5>
-        <p class="card-text">
-        {{esehi.gender}}
-      </p>
-        <p class="card-text"><small class="text-muted">{{esehi.address}}</br>{{esehi.mobilenumber}}</small></p>
-        <p><a href="{% url 'child/addtolost' esehi.id %}" class="btn btn-primary">Lost</a></p>
+{% block body %}
+<div class="container mt-5">
+  <div class="row mb-4">
+    <div class="col-md-12 d-flex justify-content-between align-items-center">
+      <div>
+        <h2 class="gradient-text font-weight-bold mb-1">My Registered Children</h2>
+        <p class="text-muted">You have registered {{ user.esehi_set.all|length }} child record(s)</p>
+      </div>
+      <div>
+        <a href="/child/addmember" class="btn btn-grad-primary">
+          <i class="fas fa-plus-circle me-2"></i>Register New Child
+        </a>
       </div>
     </div>
   </div>
-</div>
-{% endfor %}
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for esehi in user.esehi_set.all %}
+      <div class="col">
+        <div class="glass-card h-100 p-3">
+          <div class="row g-0 h-100 align-items-center">
+            <div class="col-md-4 text-center">
+              <div class="rounded-circle overflow-hidden mx-auto mb-3 mb-md-0" style="width: 120px; height: 120px; border: 2px solid var(--secondary-color);">
+                <img src="/media/{{ esehi.image }}" class="w-100 h-100 object-fit-cover" alt="{{ esehi.name }}">
+              </div>
+            </div>
+            <div class="col-md-8 ps-md-3">
+              <div class="card-body">
+                <h4 class="gradient-text font-weight-bold mb-2">{{ esehi.name }}</h4>
+                <div class="mb-3">
+                  <span class="badge bg-secondary me-2"><i class="fas fa-venus-mars me-1"></i>{{ esehi.gender }}</span>
+                  <span class="badge bg-dark border border-secondary text-muted"><i class="fas fa-map-pin me-1"></i>Zip: {{ esehi.zip1 }}</span>
+                </div>
+                <p class="text-white small mb-1"><i class="fas fa-map-marker-alt text-muted me-2"></i>{{ esehi.address }}</p>
+                <p class="text-white small mb-3"><i class="fas fa-phone-alt text-muted me-2"></i>{{ esehi.mobilenumber }}</p>
+                
+                <div class="d-flex gap-2">
+                  <a href="{% url 'child/addtolost' esehi.id %}" class="btn btn-grad-primary btn-sm px-3">
+                    <i class="fas fa-exclamation-triangle me-1"></i>Report Lost
+                  </a>
+                  <a href="/child/congrats" class="btn btn-glass btn-sm px-3">
+                    <i class="fas fa-sync-alt me-1"></i>Re-train Face
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-{%endblock%}
+    {% empty %}
+      <div class="col-md-12">
+        <div class="glass-card text-center py-5">
+          <div class="text-muted fs-1 mb-3"><i class="fas fa-folder-open"></i></div>
+          <h4 class="gradient-text font-weight-bold">No Records Found</h4>
+          <p class="text-muted mb-4">You have not registered any child records yet.</p>
+          <a href="/child/addmember" class="btn btn-grad-primary">
+            <i class="fas fa-plus-circle me-2"></i>Add Your First Child
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
 
 
 

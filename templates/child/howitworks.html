@@ -1,44 +1,57 @@
 {% extends 'child/basic.html' %}
 
+{% block title %}How It Works - Milaap{% endblock %}
+
 {% block body %}
-
-<style>
-  body{
-    background-color: #040201;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-
-  
-</style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Milaap</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/child">Home <span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/child/howitworks">How it's work</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/child/aboutus">About Us</a>
-      </li>
-        </ul>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+      <div class="glass-card">
+        <div class="text-center mb-5">
+          <div class="glow-text-primary fs-1 mb-2"><i class="fas fa-question-circle"></i></div>
+          <h2 class="gradient-text font-weight-bold">How Milaap Works</h2>
+          <p class="text-muted">A step-by-step overview of our child reconnection workflow</p>
         </div>
-        {% if user.is_authenticated %}
-        
-        <a class="btn btn-outline-success my-2 my-sm-0 mr-3" href="/child/dashboard">Dashboard</a>
-        <a class="btn btn-outline-success my-2 my-sm-0 mr-3" href="/child/logout">Logout</a>
-        {% else %}
-            <a class="btn btn-outline-success my-2 my-sm-0 mr-3" href="/child/login">Login</a>
-      <a class="btn btn-outline-success my-2 my-sm-0" href="/child/register">Registration</a>
-  
-        {% endif %}
-</nav>
-<span style="color: white;">You are at How it Works</span>
+
+        <div class="row g-4 text-white text-start">
+          <div class="col-md-4">
+            <div class="glass-card p-3 h-100 text-center border-0" style="background: rgba(255,255,255,0.02)">
+              <div class="fs-2 glow-text-primary mb-2">1</div>
+              <h5 class="gradient-text font-weight-bold mb-2">Register details</h5>
+              <p class="text-muted small">
+                Helpers or parents upload details of a missing child along with their profile picture.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="glass-card p-3 h-100 text-center border-0" style="background: rgba(255,255,255,0.02)">
+              <div class="fs-2 glow-text-primary mb-2">2</div>
+              <h5 class="gradient-text font-weight-bold mb-2">Train the AI</h5>
+              <p class="text-muted small">
+                Our platform automatically extracts facial features and trains the LBPH face recognition model.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="glass-card p-3 h-100 text-center border-0" style="background: rgba(255,255,255,0.02)">
+              <div class="fs-2 glow-text-primary mb-2">3</div>
+              <h5 class="gradient-text font-weight-bold mb-2">Match & Connect</h5>
+              <p class="text-muted small">
+                Searchers identify unknown individuals using camera/image upload, prompting secure parent contact.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-5">
+          <a href="/child/" class="btn btn-grad-primary px-4 py-2">
+            <i class="fas fa-home me-2"></i>Back to Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

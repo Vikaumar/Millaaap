@@ -1,42 +1,48 @@
 {% extends 'child/basic.html' %}
 
-{% block body %}
-<style>
-  body{
-    background-color: #040201;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-</style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Milaap</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/child">Home <span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/child/howitworks">How it's work</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/child/aboutus">About Us</a>
-      </li>
-        </ul>
-        </div>
-        {% if user.is_authenticated %}
-        
-        <a class="btn btn-outline-success my-2 my-sm-0 mr-3" href="/child/dashboard">Dashboard</a>
-        <a class="btn btn-outline-success my-2 my-sm-0 mr-3" href="/child/logout">Logout</a>
+{% block title %}About Us - Milaap{% endblock %}
 
-        {% else %}
-            <a class="btn btn-outline-success my-2 my-sm-0 mr-3" href="/child/login">Login</a>
-      <a class="btn btn-outline-success my-2 my-sm-0" href="/child/register">Registration</a>
-  
-        {% endif %}
-      
-</nav>
-<span style="color: white;">You are at About</span>
+{% block body %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+      <div class="glass-card">
+        <div class="text-center mb-5">
+          <div class="glow-text-primary fs-1 mb-2"><i class="fas fa-users-cog"></i></div>
+          <h2 class="gradient-text font-weight-bold">About Milaap</h2>
+          <p class="text-muted">A dedicated platform to reconnect missing individuals with their families</p>
+        </div>
+
+        <div class="row g-4 text-white">
+          <div class="col-md-6">
+            <h4 class="text-info"><i class="fas fa-eye me-2"></i>Our Vision</h4>
+            <p class="text-muted small">
+              Our vision is to build a safer, more connected society by using cutting-edge facial recognition technology to assist in finding and reporting missing family members or lost children.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h4 class="text-info"><i class="fas fa-shield-alt me-2"></i>Security & Privacy</h4>
+            <p class="text-muted small">
+              We care deeply about data privacy. Only authorized individuals can view and manage profiles, and the facial data is encrypted and securely processed using mathematical representations.
+            </p>
+          </div>
+          <div class="col-12 mt-4">
+            <div class="border-top border-secondary opacity-25 pt-4">
+              <h4 class="text-info"><i class="fas fa-laptop-code me-2"></i>How It Works</h4>
+              <p class="text-muted small">
+                When a missing individual is registered, the platform trains a local machine learning classifier on face images. Users searching for a lost child can use their camera or upload an image to match against this trained database, quickly alerting authorities and parents when a match is found.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-5">
+          <a href="/child/" class="btn btn-grad-primary px-4 py-2">
+            <i class="fas fa-home me-2"></i>Back to Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

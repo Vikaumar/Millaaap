@@ -1,57 +1,28 @@
-{%extends 'child/basic.html'%}
+{% extends 'child/basic.html' %}
 
+{% block title %}Logout - Milaap{% endblock %}
 
-{%block style%} 
-.namak{
-  text-align:center:
-}
+{% block body %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+      <div class="glass-card py-5">
+        <div class="glow-text-primary fs-1 mb-3"><i class="fas fa-sign-out-alt"></i></div>
+        <h2 class="gradient-text font-weight-bold mb-3">Logged Out Successfully</h2>
+        <p class="text-white mb-4 fs-5">
+          Thank you for your valuable contribution to helping reunite families.
+        </p>
 
-
-
-{%endblock%}
-
-{%block body%}
-<style>
-  body{
-    background-color: #040201;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  .container{
-    padding-top: 5rem;
-  }
-  
-</style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Milaap</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/child">Home <span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/child/howitworks">How it's work</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/child/aboutus">About Us</a>
-      </li>
-        </ul>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+          <a href="/child/login/" class="btn btn-grad-primary py-2 px-4">
+            <i class="fas fa-sign-in-alt me-2"></i>Login Again
+          </a>
+          <a href="/child/" class="btn btn-glass py-2 px-4">
+            <i class="fas fa-home me-2"></i>Back to Home
+          </a>
         </div>
-
-      <a class="btn btn-outline-success my-2 my-sm-0 mr-3" href="/child/login">Login</a>      
-      <a class="btn btn-outline-success my-2 my-sm-0" href="/child/register">Registration</a>
-  
-</nav>
-<div class="container">
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Logout Successfully!</h1>
-    <p class="lead">Thanks for giving your valuable time here.</p>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-{%endblock%}
+{% endblock %}
